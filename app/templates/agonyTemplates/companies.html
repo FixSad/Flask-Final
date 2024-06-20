@@ -1,0 +1,31 @@
+{% extends "agonyTemplates/baseTemplate.html" %}
+
+{% block title %}
+Companies Page
+{% endblock %}
+
+{% block content %}
+<div class="container" style="overflow-y: auto; max-height: 650px;">
+
+    <div class="row">
+        {% if role=="Employer" %}
+        <a type="button" class="btn btn-outline-primary" href="{{url_for('main.add_company')}}">
+            Create New Company
+        </a>
+        {% endif %}
+        {% for company in companies %}
+        <div class="card" style="width: 18rem; margin-left:30px; margin-top:10px;">
+            <div class="card-body">
+                <h5 class="card-title">{{company.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Owner: {{company.user.name}}</h6>
+                <p class="card-text">{{company.description}}</p>
+                {% if role=="Admin" %}
+                <a type="button" class="btn btn-outline-warning"
+                   href="{{url_for('main.delete_company', id=company.id )}}">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "agonyTemplates/baseTemplate.html" %}
+
+{% block title %}
+Projects Page
+{% endblock %}
+
+{% block content %}
+{% if not isVerify %}
+<h2 class="text-center">Firstly, verify your account via email. The link already awaits you &#128512;</h2>
+<p style="text-align:center">
+    <img class="text-center" height="50%" width="50%" src="https://res.cloudinary.com/teepublic/im
+age/private/s--NkspL6KL--/t_Preview/b_rgb:ffffff,c_lpad,f_jpg
+,h_630,q_90,w_1200/v1527296869/production/designs/2723988_2.jpg">
+</p>
+{% elif projects.Length == 0 or projects.Length == Null %}
+<div>
+    <table class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Prog language</th>
+            <th scope="col">Features</th>
+            <th scope="col">Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.prog_languages }}</td>
+            <td>{{ project.features }}</td>
+            <td>{{ project.link }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div>
+    <table class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Prog language</th>
+            <th scope="col">Features</th>
+            <th scope="col">Description</th>
+            <th scope="col">Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>test name</td>
+            <td>test lang</td>
+            <td>test fet</td>
+            <td>desc</td>
+            <td>link</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

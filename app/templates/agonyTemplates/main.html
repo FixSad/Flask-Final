@@ -1,0 +1,59 @@
+{% extends "agonyTemplates/baseTemplate.html" %}
+
+{% block title %}
+Info Page
+{% endblock %}
+
+{% block content %}
+{% if username %}
+<section id='card_section'>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-4">
+                <div class="card" id='main_card'>
+                    <div class="card-body text-center">
+                        <div class="mt-3 mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava{{rand}}-bg.webp"
+                                 class="rounded-circle img-fluid" id='imaga' alt='Img'
+                                 style="height: 150px; width: 150px;"/>
+                        </div>
+                        <Link to='/info'>
+                        <h4 class="mb-2">
+                            {{user.name}}
+                        </h4>
+                        </Link>
+                        <hr/>
+                        <p class="mb-3">Experience<span class="mx-2">|</span>{{user.experience}}</p>
+                        <p class="mb-3">Email<span class="mx-2">|</span>{{user.email}}</p>
+                        <p class="mb-3">City<span class="mx-2">|</span>{{user.city}}</p>
+                        <StateNewMessage/>
+                        <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                            <div>
+                                <p class="mb-2 h5">{{user.role.name}}</p>
+                                <p class="text-muted mb-0">Role</p>
+                            </div>
+
+                            <div>
+                                <p class="mb-2 h5">{{user.confirmed}}</p>
+                                <p class="text-muted mb-0">Confirmed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="card">
+    <h5 class="card-header">Join us!</h5>
+    <div class="card-body">
+        <h5 class="card-title">Joining my portfolio programming site can offer a multitude of benefits that can help
+            individuals grow as programmers and advance in their careers.</h5>
+        <p class="card-text">Stay updated on industry trends: Members will have access to resources, tutorials, and
+            discussions that keep them informed about the latest trends and technologies in the programming world</p>
+        <a href="{{url_for('authorization.sign_up')}}" class="btn btn-primary">Join!</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
